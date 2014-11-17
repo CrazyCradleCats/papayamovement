@@ -11,10 +11,12 @@
 @implementation ViewController
 
 - (IBAction)Restart{
+    [step invalidate];
     pos = CGPointMake(5.0, 2.0);//Higher # = Faster x = horz & y = vert
     randomizer = 0;
     papaya.x = 137.0;
     papaya.y = 240.0;
+    step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
 }
 
 - (void) onTimer{
@@ -45,10 +47,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    timer = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
+    step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
     pos = CGPointMake(5.0, 2.0);//Higher # = Faster x = horz & y = vert
-    randomizer = 0;
-    [reset hidden:FALSE];
 }
 
 - (void)didReceiveMemoryWarning {
