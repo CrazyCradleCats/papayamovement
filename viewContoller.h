@@ -16,6 +16,6 @@
     int randomizer;
 }
 
-- (IBAction)Start;
+- (IBAction)Restart;
 @end
 
