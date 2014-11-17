@@ -13,6 +13,7 @@
     IBOutlet UIButton *reset;
     CGPoint pos;
     NSTimer *step;
+    int randomizer;
 }
 
 - (IBAction)Start;
