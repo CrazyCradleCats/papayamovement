@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
 @interface ViewContoller : UIViewController {
-    IBOutlet UIImageView *object;
+    IBOutlet UIImageView *papaya;
+    IBOutlet UIButton *reset;
     CGPoint pos;
-    NSTimer *timer;
+    NSTimer *step;
 }
 
 - (IBAction)Start;
