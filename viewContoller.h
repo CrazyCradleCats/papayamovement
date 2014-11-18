@@ -10,11 +10,12 @@
 
 @interface ViewContoller : UIViewController {
     IBOutlet UIImageView *papaya;
-    //Will stand in for the player.
-    IBOutlet UIImageView *subPlayer;
+    IBOutlet UIImageView *player;
     IBOutlet UIButton *reset;
     CGPoint pos;
     NSTimer *step;
+    int xDiff;
+    int yDiff;
 }
 
 - (IBAction)Restart;
