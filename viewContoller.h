@@ -16,6 +16,7 @@
     NSTimer *step;
     int xDiff;
     int yDiff;
+    int minDist;
 }
 
 - (IBAction)Restart;
