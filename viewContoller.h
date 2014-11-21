@@ -14,8 +14,8 @@
     IBOutlet UIButton *reset;
     CGPoint pos;
     NSTimer *step;
-    int xDiff;
-    int yDiff;
+    int xSpeed;
+    int ySpeed;
     int minDist;
 }
 
