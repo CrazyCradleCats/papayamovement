@@ -26,28 +26,46 @@
     else if(papaya.x > 320)
         pos.x = -5;
     else
-        pos.x = xDiff;
+        pos.x = xSpeed;
         
     if(papaya.y < 0)
         pos.y = 5;
     else if(papaya.y > 320)
         pos.y = -5;
     else
-        pos.y = yDiff;
+        pos.y = ySpeed;
         
     papaya.x = papaya.x + pos.x;
     papaya.y = papaya.y + pos.y;
 }
-- (void) checkDist{
-    if(papaya.x - player.x > 0)
-        xDiff = (minDistX - (papaya.x - player.x))/2
+- (void) checkSpeed{
+    if(papaya.x - player.x > 0){
+        xSpeed = 4;
+        if(papaya.x - player.x >= minDistX)
+            xSpeed = 0;
+    }else if(papaya.x - player.x < 0){
+        xSpeed = -4;
+        if(papaya.x-player.x <= -1 * minDistX)
+            xSpeed = 0;
+    }
+    
+    if(papaya.y - player.y > 0){
+        ySpeed = 4;
+        if(papaya.y - player.y >= minDistY)
+            ySpeed = 0;
+    }else if(papaya.y - player.y < 0){
+        ySpeed = -4;
+        if(papaya.y - player.y <= -1 * minDistY)
+            ySpeed = 0;
+    }
 }
+        
 - (void)viewDidLoad {
     [super viewDidLoad];
     step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
     pos = CGPointMake(0.0, 0.0);//Higher # = Faster x = horz & y = vert
-    xDiff = 0;
-    yDiff = 0;
+    xSpeed = 0;
+    ySpeed = 0;
     minDistX = 64;
     minDistY = 50;
 }
