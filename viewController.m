@@ -14,41 +14,39 @@
     [step invalidate];
     pos = CGPointMake(5.0, 2.0);//Higher # = Faster x = horz & y = vert
     randomizer = 0;
-    papaya.x = 137.0;
-    papaya.y = 240.0;
+    papaya.center = CGPointMake(160, 240);
     step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
 }
 
 - (void) onTimer{
-    papaya = CGPointMake(papaya.x + pos.x, papaya.y + pos.y);
-    
     if(randomizer % 2 > 0){
-        if(papaya.x > 320)
+        if(papaya.center.x > 320)
             pos.x = -1*(pos.x + 0.25);
-        else if(papaya.x < 0)
+        else if(papaya.center.x < 0)
             pos.x = -1*(pos.x - 0.25);
     
-        if(papaya.y > 480)
-            papaya.y = -1*(pos.y - 0.75);
-        else if(papaya.y < 0)
-            papaya.y = -1*(pos.y + 0.75);
+        if(papaya.center.y > 480)
+            pos.y = -1*(pos.y - 0.75);
+        else if(papaya.center.y < 0)
+            pos.y = -1*(pos.y + 0.75);
         
     }else{
-        if(papaya.x > 320)
+        if(papaya.center.x > 320)
             pos.x = -1*(pos.x - 0.25);
         else if(papaya.x < 0)
             pos.x = -1*(pos.x + 0.25);
         
-        if(papaya.y > 480)
+        if(papaya.center.y > 480)
             pos.y = -1*(pos.y + 0.75);
-        else if(papaya.y < 0)
+        else if(papaya.center.y < 0)
             pos.y = -1*(pos.y - 0.75);
     }
+    papaya.center = CGPointMake(papaya.center.x + pos.x, papaya.center.y + pos.y);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:(onTimer) userInfo: nil repeats:YES];
-    pos = CGPointMake(5.0, 2.0);//Higher # = Faster x = horz & y = vert
+    step = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:@selector(onTimer) userInfo: nil repeats:YES];
+    pos = CGPointMake(5.0, 2.0);
 }
 
 - (void)didReceiveMemoryWarning {
